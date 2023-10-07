@@ -181,7 +181,7 @@ class RTCIceGatherer(AsyncIOEventEmitter):
             iceServers = self.getDefaultIceServers()
         ice_kwargs = connection_kwargs(iceServers)
 
-        self._connection = Connection(ice_controlling=False, **ice_kwargs)
+        self._connection = Connection(ice_controlling=False, **ice_kwargs,ephemeral_ports=list(range(5800,5811))) #List of ports is 5800-5810 for FRC
         self._remote_candidates_end = False
         self.__state = "new"
 
